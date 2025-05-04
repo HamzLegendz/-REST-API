@@ -1,59 +1,71 @@
-
-<h1 align="center">🚀 Simple Base REST API</h1>
-<p align="center">
-  Modular Express.js REST API boilerplate built for scalability, performance, and ease of use.
-</p>
-
-<p align="center">
+<h1 align="center">🚀 Simple Base REST API</h1><p align="center">
+  REST API berbasis Express.js yang dirancang untuk <strong>skabilitas</strong>, <strong>performa tinggi</strong>, dan <strong>kemudahan penggunaan</strong>.
+</p><p align="center">
   <img src="https://img.shields.io/badge/Express.js-4.x-blue.svg" />
   <img src="https://img.shields.io/badge/Node.js-18+-green.svg" />
-  <img src="https://img.shields.io/badge/API-ready-yellow.svg" />
-  <img src="https://img.shields.io/badge/Made%20by-HamzLegendz-red.svg" />
 </p>
-
 ---
 
 ## 📂 Project Structure
 
 ```
-simple-api/
+base-restapi/
 ├── api/
-│   └── ai/
-│       └── hydromind.js       # Example API endpoint
+│   ├── ai/
+│   │   └── hydromind.js      # API Feature endpoint
+│   └── maker/
+│       └── brat.js            # API Feature Maker endpoint
+│
+├── public/                    # Static assets served by Express
+│   ├── css/
+│   │   ├── monitor.css
+│   │   ├── style.css         # stylesheet css
+│   │   └── report.css         
+│   └── js/
+│       ├─── monitor.js        # Back-end helper scripts
+│       └── report.js
+│
 ├── views/
-│   └── api.json               # Endpoint listing for documentation
-├── apiMonitor.js              # Logs request success & failure
-├── index.js                   # Main server entry point
+│   ├── api.json                # JSON Status documentation of API routes
+│   ├── documentation.html       
+│   ├── index.html              # Front-end html
+│   ├── monitor.html
+│   └── report.html
+│
+├── app.js                      # App entry point
+├── apiMonitor.js               # API request logging
+├── package.json                # Project metadata & dependencies
+└── README.md                   # Project documentation
 ```
 
 ---
 
 ## ⚙️ Getting Started
 
-To get started, clone this repository to your local machine and install dependencies:
+Untuk memulai, klon repositori ini ke terminal Anda dan instal:
 
 ```bash
-git clone https://github.com/yourusername/simple-api.git
-cd simple-api
+git clone https://github.com/ArixOffc/base-restapi.git
+cd base-restapi
 npm install
 node index.js
 ```
 
-Your API server will be running at [http://localhost:3000](http://localhost:3000) by default.
+Server API akan berjalan di [http://localhost:3000](http://localhost:3000) default.
 
 ---
 
-## ➕ Menambahkan Endpoint Baru
+## ➕ Adding A New Endpoint
 
-Adding a new endpoint is super easy. Here’s how you can do it:
+Menambahkan endpoint berikut cara melakukannya:
 
-1. **Create a new category folder** inside `/api` (e.g., `ai`, `tools`, `media`, etc.):
+1. **Buat folder kategori baru** contoh `/api` (e.g., `ai`, `tools`, `downloader`, etc.):
 
 ```bash
-mkdir api/ai
+mkdir api/ai   # Example
 ```
 
-2. **Add a new file** inside that folder, such as `hydromind.js`, and structure the endpoint like this:
+2. **Tambahkan file baru** di dalam folder itu, contoh`hydromind.js`, dan strukturkan endpoint seperti ini:
 
 ```js
 const express = require('express');
@@ -100,57 +112,77 @@ async function hydromind(content, model) {
 module.exports = router;
 ```
 
-3. **Update the `/views/api.json` file** with your new endpoint so that it appears in the API documentation:
-
+3. **Perbarui `/views/api.json` file** dengan endpoint baru kamu sehingga muncul dalam respon API:
 ```json
 {
-  "status": true,
-  "api": [
-    {
-      "endpoint": "/api/ai/hydromind",
-      "method": "GET",
-      "description": "AI chatbot using HydroMind API (requires text and model query)"
-    }
-  ]
-}
+    "status": true,
+    "api": [
+        {
+            "kategory": "AI",
+            "endpoint": [
+                {
+                    "path": "/api/ai/lumin",
+                    "method": "GET",
+                    "parameter": [
+                        "content"
+                    ],
+                    "description": "Lumin Ai"
+                },
+                {
+                    "path": "/api/ai/hydromind",
+                    "method": "GET",
+                    "parameter": [
+                        "text"
+                    ],
+                    "description": "hydromind AI endpoint"
+                }
+            ]
+        },
+        {
+            "kategory": "maker",
+            "endpoint": [
+                {
+                    "path": "/api/maker/brat",
+                    "method": "GET",
+                    "parameter": [
+                        "text"
+                    ],
+                    "description": "Anomali Image Brat Meme"
+                }
+            ]
+        }
+    ]
+
 ```
 
 ---
 
-## 🔍 Recommended API Testing Tools
+## 🔍 Saran Website Pengujian API yang Direkomendasikan
 
-These tools make it easier to test and interact with your API endpoints:
-
-- [Postman](https://www.postman.com/) - The most popular tool for API testing and development.
-- [Hoppscotch](https://hoppscotch.io/) - A lightweight alternative that runs in the browser.
-- [Insomnia](https://insomnia.rest/) - A powerful API client with robust support for environments.
-
-All of these tools let you easily make requests to your API, check responses, and automate tests.
+Website ini memudahkan pengujian dan interaksi dengan endpoint API :
+- [Postman](https://www.postman.com/)
+- [Hoppscotch](https://hoppscotch.io/)
+- [Insomnia](https://insomnia.rest/)
 
 ---
 
-## 🧠 Tips Development
+## 🧠 Tips Untuk Development
 
-- Use **`.env`** files to keep sensitive information like API keys safe.
-- Use **`nodemon`** for automatic restarts while developing:
+- Gunakan **`.env`** file untuk menjaga informasi sensitif seperti keamanan API tetap aman.
+- Use **`nodemon`** untuk memulai ulang otomatis saat mengembangkan:
 
 ```bash
 npx nodemon index.js
 ```
-
 ---
 
 ## 🤝 Contributing
 
-We welcome contributions! If you find a bug or want to add a feature, fork the repository, create a new branch, and submit a pull request.
-
+Kami Menerima Pull Request, Commit, Issues Untuk kontribusi Jika Anda menemukan bug Atau Penyesuaian 
 ---
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Comming Soon
 
 ---
-
-> Built with ❤️ using Node.js & Express  
-> Style by developer taste + documentation clarity
